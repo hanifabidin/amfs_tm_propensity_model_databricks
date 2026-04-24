@@ -1,0 +1,20 @@
+# configs/data_source_config.yaml
+bm_sources:
+  - axa_avr
+  - axa_cust_cd
+  - axa_cust_demo
+  - axa_tran_allper_cd
+  - axa_tran_allper_db
+  - axa_tran_net
+  - cc_type_cnt
+  - cif_acct_mapping
+  - cifsumm
+  - cust_zipcode_mapping
+  - dc_type_cnt
+  - debitcard_trx_edc_cif
+  - master_filter
+  - master_filter_consent
+  - phsumm
+  - qris_trx_edc_cif
+  - trx_outflow
+  - trx_outflow_payment_purchase
