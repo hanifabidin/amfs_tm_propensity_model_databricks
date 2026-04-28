@@ -17,6 +17,7 @@ class Balance:
         self.base_path = f"{catalog}.{schema}"
         self.df_cleaned = None
         self.df_raw = None
+        self.target_schema = None
 
     def _get_history_list(self, snapshot, period=6):
         start_dt = datetime.strptime(snapshot, '%Y%m')
@@ -202,9 +203,24 @@ class Balance:
             logging.warning(f"Skipping create_deduct: {str(e)}")
 
     def _save_to_fs(self, df, table_name, snapshot):
-        full_name = f"{self.base_path}.{table_name}_features"
+        """
+        Modified to support the 'features' schema redirect.
+        """
+        # 1. Determine the output schema
+        schema_out = self.target_schema if self.target_schema else self.schema
+        full_name = f"{self.catalog}.{schema_out}.{table_name}_features"
+        
+        # 2. Add snapshot date
         df = df.withColumn("snapshot_date", lit(snapshot))
+        
+        # 3. Standard Feature Engineering Client logic
+        logging.info(f"Saving features to: {full_name}")
         try:
             self.fe.write_table(name=full_name, df=df, mode="merge")
-        except:
-            self.fe.create_table(name=full_name, primary_keys=["cifno"], df=df)
+        except Exception:
+            logging.info(f"Creating new feature table: {full_name}")
+            self.fe.create_table(
+                name=full_name, 
+                primary_keys=["cifno", "snapshot_date"], # Added snapshot_date as PK for BAU
+                df=df
+            )

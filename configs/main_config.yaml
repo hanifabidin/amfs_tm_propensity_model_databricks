@@ -1,0 +1,6 @@
+# configs/main_config.yaml
+DATABRICKS:
+  catalog: "amfs_tm"
+  raw_schema: "raw"
+  clean_schema: "clean"
+  features_schema: "features"

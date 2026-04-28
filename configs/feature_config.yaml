@@ -1,0 +1,65 @@
+feature_modules:
+  # 1. Start with PH and Loans (Others depend on these flags)
+  - module: "amfs_tp.features.bank.phsumm"
+    class: "BankPH"
+    enabled: true
+    methods:
+      - "create"
+      - "create_loan"
+      - "create_saving_account"
+
+  # 2. Main Account Balances
+  - module: "amfs_tp.features.bank.balance"
+    class: "Balance"
+    enabled: true
+    methods:
+      - "create_clean"
+      - "create_raw"
+      - "create"
+      - "create_deduct"
+      - "create_real"
+
+  # 3. AXA Specific Balances
+  - module: "amfs_tp.features.bank.avr"
+    class: "BankAvr"
+    enabled: true
+    methods:
+      - "create"
+
+  # 4. Card Types
+  - module: "amfs_tp.features.bank.card_type"
+    class: "CreditType"
+    enabled: true
+    methods:
+      - "create"
+
+  - module: "amfs_tp.features.bank.card_type"
+    class: "DebitType"
+    enabled: true
+    methods:
+      - "create"
+
+  # 5. Transactions & Cashflow
+  - module: "amfs_tp.features.bank.trx_net"
+    class: "TrxNet"
+    enabled: true
+    methods:
+      - "create"
+
+  - module: "amfs_tp.features.bank.outflow"
+    class: "TrxOutflow"
+    enabled: true
+    methods:
+      - "create"
+
+  - module: "amfs_tp.features.bank.outflow_purchase"
+    class: "TrxOutflowPayment"
+    enabled: true
+    methods:
+      - "create"
+
+  - module: "amfs_tp.features.bank.trx_debitedc"
+    class: "TrxDebitEdc"
+    enabled: true
+    methods:
+      - "create"
