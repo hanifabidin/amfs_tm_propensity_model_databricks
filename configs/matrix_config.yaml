@@ -1,0 +1,27 @@
+settings:
+  running_mode: all
+feature_sets:
+  bank_ph:
+    enabled: true
+    table: features.bank_ph_features
+    key: cifno
+  balance_feat:
+    enabled: true
+    table: features.balance_window_features
+    key: cifno
+  axa_avr:
+    enabled: true
+    table: features.axa_avr_features
+    key: cifno
+  loan_diff:
+    enabled: true
+    table: features.loan_diff_features
+    key: cifno
+  trx_out:
+    enabled: true
+    table: features.trx_outflow_features
+    key: cifno
+  trx_purchase:
+    enabled: true
+    table: features.trx_outflow_purchase_features
+    key: cifno

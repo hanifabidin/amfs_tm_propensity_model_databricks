@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: amfs_tp
+Version: 0.1.0
+Summary: Propensity Model Pipeline for AMFS Telemarketing new Acquisition
+Requires-Dist: pandas
+Requires-Dist: databricks-feature-engineering
+Requires-Dist: xgboost
+Requires-Dist: scikit-learn
+Requires-Dist: pyyaml
+Requires-Dist: imblearn
+Requires-Dist: mlflow

@@ -1,0 +1,85 @@
+# configs/impute_config.yaml
+
+# Dictionary for renaming columns (Standardizing for Models)
+change_names:
+  "bill payment_freq_trxout": "billpayment_freq_trxout"
+  "bill payment_amt_trxout": "billpayment_amt_trxout"
+  "bill payment_amt_per_trxout": "billpayment_amt_per_trxout"
+  "credit card_freq_trxout": "creditcard_freq_trxout"
+  "credit card_amt_trxout": "creditcard_amt_trxout"
+  "credit card_amt_per_trxout": "creditcard_amt_per_trxout"
+  "interbank transfer_freq_trxout": "interbanktransfer_freq_trxout"
+  "interbank transfer_amt_trxout": "interbanktransfer_amt_trxout"
+  "interbank transfer_amt_per_trxout": "interbanktransfer_amt_per_trxout"
+  "intrabank transfer_freq_trxout": "intrabanktransfer_freq_trxout"
+  "intrabank transfer_amt_trxout": "intrabanktransfer_amt_trxout"
+  "intrabank transfer_amt_per_trxout": "intrabanktransfer_amt_per_trxout"
+  "personal loan_freq_trxout": "personalloan_freq_trxout"
+  "personal loan_amt_trxout": "personalloan_amt_trxout"
+  "personal loan_amt_per_trxout": "personalloan_amt_per_trxout"
+  "tv cable_freq_trxout": "tvcable_freq_trxout"
+  "tv cable_amt_trxout": "tvcable_amt_trxout"
+  "tv cable_amt_per_trxout": "tvcable_amt_per_trxout"
+
+# Mapping for imputation strategy
+impute_dict:
+  - {feature: "nominal_capita", impute_with: "CUST_MEDIAN"}
+  - {feature: "ppp_capita", impute_with: "CUST_MEDIAN"}
+  - {feature: "nominal", impute_with: "CUST_MEDIAN"}
+  - {feature: "ppp", impute_with: "CUST_MEDIAN"}
+  - {feature: "population", impute_with: "CUST_MEDIAN"}
+  - {feature: "maxdt_range_cnts", impute_with: "CUST_MEDIAN"}
+  - {feature: "mindt_range_cnts", impute_with: "CUST_MEDIAN"}
+  - {feature: "age_tier", impute_with: "CUST_MEDIAN"}
+  - {feature: "year_addr", impute_with: "CUST_MEDIAN"}
+  - {feature: "year_rel", impute_with: "CUST_MEDIAN"}
+  - {feature: "year_work", impute_with: "CUST_MEDIAN"}
+  - {feature: "vol_income", impute_with: "CUST_MEDIAN"}
+  - {feature: "date_org_vintage", impute_with: "CUST_MEDIAN"}
+  - {feature: "depend_nb", impute_with: "CUST_MEDIAN"}
+  - {feature: "totph_bank_ph", impute_with: "CUST_MEDIAN"}
+  - {feature: "saving_acct_vint_l_bank_ph", impute_with: "CUST_MEDIAN"}
+  - {feature: "saving_acct_vint_f_bank_ph", impute_with: "CUST_MEDIAN"}
+  - {feature: "saving_acct_delta_bank_ph", impute_with: "CUST_MEDIAN"}
+  - {feature: "all_acct_vint_l_bank_ph", impute_with: "CUST_MEDIAN"}
+  - {feature: "all_acct_vint_f_bank_ph", impute_with: "CUST_MEDIAN"}
+  - {feature: "houstyp_id", impute_with: "CREATE_CATEGORY"}
+  - {feature: "occp_id", impute_with: "CREATE_CATEGORY"}
+  - {feature: "cusedu_id", impute_with: "CREATE_CATEGORY"}
+  - {feature: "marital_id", impute_with: "CREATE_CATEGORY"}
+  - {feature: "empinds_id", impute_with: "CREATE_CATEGORY"}
+  - {feature: "gender_id", impute_with: "CUST_MODE"}
+  - {feature: "intuser_fg", impute_with: "CUST_MODE"}
+  - {feature: "mbluser_fg", impute_with: "CUST_MODE"}
+  - {feature: "prior_fg", impute_with: "CUST_MODE"}
+  - {feature: "rsdnt_fg", impute_with: "CUST_MODE"}
+
+categorical_features:
+  intuser_fg: ["Y"]
+  mbluser_fg: ["Y"]
+  prior_fg: ["Y"]
+  rsdnt_fg: ["Y"]
+  gender_id: ["M"]
+  occp_id: ["PSW", "PNS", "PBUM", "MHS", "WSW", "IRT", "MIL", "PRMDS", "POL", "PROF", "GR", "KOP", "PTN", "DKTR", "PIF", "ENGR", "YYS", "PKS", "PENS", "PGCR", "PNG", "NTRS", "PKJSN", "KONS", "WRTWN", "AKT"]
+  houstyp_id: ["MILIK", "KANTR", "KLRGA", "KOST", "DINAS", "SEWA", "PROJ"]
+  marital_id: ["B", "A", "C", "D"]
+  cusedu_id: ["B", "D", "A", "F", "E", "C"]
+  empinds_id: [9, 3, 7, 5, 1, 8, 6, 6006, 2, 6009, 6008, 7001, 4, 6003, 8001, 6007, 9001, 6002, 6001, 6005, 6004]
+
+useless_columns:
+  - "cuscls_id"
+  - "sum_purchase_amt_per_trxout"
+  - "sum_db_trxper"
+  - "sum_cd_trxper"
+  - "mxdt_range_lm"
+  - "mndt_range_lm"
+  - "mxdt_range_lm2"
+  - "mndt_range_lm2"
+  - "mxdt_range_lm3"
+  - "mndt_range_lm3"
+  - "delta_range_lm3"
+  - "delta_range_lm2"
+  - "weekday_mxdt"
+  - "weekday_mndt"
+  - "trx_month_db_edc"
+  - "east"

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amfs_tp"
+version = "0.1.0"
+description = "Propensity Model Pipeline for AMFS Telemarketing new Acquisition"
+dependencies = [
+    "pandas",
+    "databricks-feature-engineering",
+    "xgboost",
+    "scikit-learn",
+    "pyyaml",
+    "imblearn",
+    "mlflow"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
